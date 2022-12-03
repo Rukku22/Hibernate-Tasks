@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mapping.one_to_many">
+    <class name="Orders" table="ORDERS">
+        <id name="id" column="ORDERS_ID">
+            <generator class="native"/>
+        </id>
+        <property name="title" column="TITLE" />
+        <property name="description" column="DESCRIPTION" />
+        
+        <join table="CustomerOrders" inverse="true">
+            <key column="ORDERS_ID"/>
+            <many-to-one name="customer" column="CUSTOMER_ID" not-null="true"/>
+        </join>
+    </class> 
+</hibernate-mapping>
